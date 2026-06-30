@@ -39,8 +39,9 @@ jobs:
 
       - name: Deploy via rsync
         run: |
-          rsync -avz --delete \
+          rsync -avz --delete --omit-dir-times --no-perms \
             --exclude '.git*' \
             --exclude '.github' \
+            --exclude 'cloudflared.deb' \
             -e "ssh -F $HOME/.ssh/config" \
             ./ deploy-server:${{ secrets.DEPLOY_PATH }}/
