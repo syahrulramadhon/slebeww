@@ -42,5 +42,5 @@ jobs:
           rsync -avz --delete \
             --exclude '.git*' \
             --exclude '.github' \
-            -e "ssh -F ~/.ssh/config" \
+            -e "ssh -F $HOME/.ssh/config" \
             ./ deploy-server:${{ secrets.DEPLOY_PATH }}/
